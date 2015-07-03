@@ -10,7 +10,7 @@ from scipy.stats import beta
 plot_dir='plots'
 pkl_dir='pickled'
 
-def run_test(test_name,n,m,dist,make_pickle=False,):
+def run_test(test_name,n,m,dist,make_pickle=False):
 
 	results=fc.flipCoins(n,m,dist)
 	if make_pickle:
@@ -73,18 +73,15 @@ def guess_beta(num_weights,results,CI=.9,alpha=.3,color='green'):
 
 if __name__ == "__main__":
 	# Choose some weight distributions and sets of coin flips to test on.
-	tests={}
-	#     Name            =(num coins, num flips per coin, coin weight distribution)
-	tests['half_uniform'] =(1024,100,D.half_uniform)
-	tests['uniform']      =(1024,10,D.uniform)
-	tests['all_coins_0.8']=(40,1000,0.8)
-	tests['two_sails_400']=(1024,400,D.two_sails)
-	tests['two_sails_10'] =(1024,10,D.two_sails)
+	tests=[]
+	#     (name, num coins, num flips per coin, coin weight distribution)
+	tests.append(('half_uniform',1024,100,D.half_uniform))
+	tests.append(('uniform',1024,10,D.uniform)
+	tests.append(('all_coins_0.8',40,1000,0.8))
+	tests.append(('two_sails_400',1024,400,D.two_sails)
+	tests.append(('two_sails_10',1024,10,D.two_sails)
 
-	make_pickle=False
-
-	for test_name in tests:
-		(n,m,dist)=tests[test_name]
+	for (test_name,n,m,dist) in tests:
 		results=run_test(test_name,n,m,dist)
 		ground_truth(dist,dist_type='cdf')
 		guess_beta(1000,results,color='purple')

@@ -16,8 +16,9 @@ If we observed the w(i) directly, then we would be trying to recover D from i.i.
 We would like to construct a similar estimate for the CDF of D.
 
 To run this code, run:
-	python tests.py
-and after a few seconds you should see a plot showing the performance of an estimator across various synthetic data sets.
+	python run_tests.py
+After a few seconds, you should see a plot showing the performance of an estimator on a synthetic data sets.  Close
+the plot, and a few seconds you'll see the performance on a second synthetic data set, and so forth.
 
 
 
